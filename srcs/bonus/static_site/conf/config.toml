@@ -1,0 +1,26 @@
+#baseURL = "https://alemafe.42.fr/static"
+title = "Alemafe's Site"
+theme = "m10c"
+paginate = 8
+canonifyURLs = true
+
+[menu]
+  [[menu.main]]
+    identifier = "home"
+    name = "Home"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about"
+    weight = 2
+
+[params]
+  author = "Alessio Genovese - Federico Forlini - Marco D'Alessandro"
+  description = "we are authisitic boys"
+  menu_item_separator = " - "
+  [[params.social]]
+    icon = "github"
+    name = "Github"
+    url = "https://github.com/Freneticbitch"
