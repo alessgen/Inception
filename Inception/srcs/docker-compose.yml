@@ -1,4 +1,4 @@
-version: "Compose specification"
+version: "Compose Specification"
 
 services:
     nginx:
@@ -12,7 +12,7 @@ services:
             - mynetwork
         restart: always
         volumes:
-            - "php_nginx:/var/www/html"
+            - "alemafe_nginx:/var/www/html"
         container_name: nginx
         
     wordpress:
@@ -27,7 +27,7 @@ services:
         env_file:
             - .env
         volumes:
-            - "php_nginx:/var/www/html"
+            - "alemafe_nginx:/var/www/html"
         container_name: wordpress
         
     mariadb:
@@ -47,23 +47,58 @@ services:
             timeout: 5s
             retries: 5
 
+    adminer:
+        build:
+            context: ./bonus/adminer
+        depends_on:
+            - wordpress
+        networks:
+            - mynetwork
+        volumes:
+            - "alemafe_nginx:/var/www/html"
+        container_name: adminer
+    
+    ftp:
+        build:
+            context: ./bonus/ftp
+        depends_on:
+            - wordpress
+        env_file:
+            - .env
+        networks:
+            - mynetwork
+        restart: always
+        container_name: ftp
+        volumes:
+            - "alemafe_nginx:/ftp"
+        ports:
+            - "21:21"
+            - "21100-21110:21100-21110"
+    
+    redis:
+        build:
+            context: ./bonus/redis
+        networks:
+            - mynetwork
+        volumes:
+            - "alemafe_nginx:/var/www/html"
+        restart: always
+        container_name: redis
+
+
 networks:
   mynetwork:
 
 volumes:
-    php_nginx: 
+    alemafe_nginx: 
         driver: local
         driver_opts:
             type: none
             o: bind
-            device: /home/${SUDO_USER}/data/php_nginx
+            device: /home/${SUDO_USER}/data/alemafe_nginx
     db:
         driver: local
         driver_opts:
             type: none
             o: bind
-<<<<<<< HEAD
             device: /home/${SUDO_USER}/data/db
-=======
-            device: /home/${SUDO_USER}/data/db
->>>>>>> 0ab1d27 (ok)
