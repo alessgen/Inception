@@ -1,5 +1,5 @@
-#baseURL = "https://alemafe.42.fr/static"
-title = "Alemafe's Site"
+#baseURL = "https://agenoves.42.fr/static"
+title = "agenoves's Site"
 theme = "m10c"
 paginate = 8
 canonifyURLs = true
@@ -17,10 +17,10 @@ canonifyURLs = true
     weight = 2
 
 [params]
-  author = "Alessio Genovese - Federico Forlini - Marco D'Alessandro"
-  description = "we are authisitic boys"
+  author = "Alessio Genovese"
+  description = "Lazio's supporter"
   menu_item_separator = " - "
   [[params.social]]
     icon = "github"
     name = "Github"
-    url = "https://github.com/Freneticbitch"
+    url = "https://github.com/alessgen"

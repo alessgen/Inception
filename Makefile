@@ -18,6 +18,8 @@ install:
 	tee /etc/apt/sources.list.d/docker.list > /dev/null
 	apt update -y
 	apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+	sh -c -e "echo '127.0.0.1 agenoves.42.fr' >> /etc/hosts";
+	sh -c -e "echo '127.0.0.1 www.agenoves.42.fr' >> /etc/hosts";
 
 clean:
 	docker compose -f srcs/docker-compose.yml down

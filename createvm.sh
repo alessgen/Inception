@@ -4,7 +4,6 @@ export BLUE='\033[0;34m'
 export RED='\033[0;31m'
 export GREEN='\033[0;32m'
 export RESET='\033[0m'
-export PATH_='/home/ubuntudev/Desktop'
 
 echo -e "${BLUE}Creating VM... ${RESET}" 
 VBoxManage createvm --name Inception-Xubuntu --ostype Ubuntu_64 --register
@@ -63,7 +62,7 @@ else
     exit 1
 fi
 echo -e "${BLUE}Attach ISO to optical drive...${RESET}"
-VBoxManage storageattach Inception-Xubuntu --storagectl "IDE Controller" --port 0 --device 0 --type dvddrive --medium ${PATH_}/xubuntu-22.04.2-desktop-amd64.iso
+VBoxManage storageattach Inception-Xubuntu --storagectl "IDE Controller" --port 0 --device 0 --type dvddrive --medium /goinfre/xubuntu-22.04.2-desktop-amd64.iso
 if [ $? ]; then
     echo -e "${GREEN}ISO attached successfully!${RESET}"
 else
@@ -86,11 +85,3 @@ else
     echo -e "${RED}VM settings modification failed!${RESET}"
     exit 1
 fi
-echo -e "${BLUE}Starting VM...${RESET}"
-# VBoxManage startvm Inception-Xubuntu
-# if [ $? ]; then
-#     echo -e "${GREEN}VM started successfully!${RESET}"
-# else
-#     echo -e "${RED}VM start failed!${RESET}"
-#     exit 1
-# fi
